@@ -13,14 +13,14 @@ If the time maches inside of start and end time, then it returns true.
 
 
 
-//Seconds scale comparison
+## Seconds scale comparison
 > bool isintime(int shh, int smm,int sss, int ehh, int emm, int ess) 
 //Match Seconds Resolution : isintime (Start Hour, Start Minute, Start Second, End Hour, End Minute, End Second)
 
 
 
 
-//Minutes scale comparison
+## Minutes scale comparison
 > bool isintime(int shh, int smm, int ehh, int emm) 
 //Match Minutes Resolution : isintime (Start Hour, Start Minute, End Hour, End Minute)
 
