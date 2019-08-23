@@ -8,24 +8,24 @@ and compares the minutes or seconds to the given start time and end time.
 
 If the time maches inside of start and end time, then it returns true.
 
-<b>The Function :</b>
+## The Function :
 
 
 
 
 //Seconds scale comparison
-bool isintime(int shh, int smm,int sss, int ehh, int emm, int ess) 
+> bool isintime(int shh, int smm,int sss, int ehh, int emm, int ess) 
 //Match Seconds Resolution : isintime (Start Hour, Start Minute, Start Second, End Hour, End Minute, End Second)
 
 
 
 
 //Minutes scale comparison
-bool isintime(int shh, int smm, int ehh, int emm) 
+> bool isintime(int shh, int smm, int ehh, int emm) 
 //Match Minutes Resolution : isintime (Start Hour, Start Minute, End Hour, End Minute)
 
 
-Example:
+## Example:
 
 ret=isintime(12,1,16,30);       // (12:01 to 16:30)
 or
@@ -34,4 +34,4 @@ ret=isintime(12,1,50,16,30,0);  // (12:01:50 to 16:30:00)
 
 Cheers.
 
-Have a look on my other Arduino Sketches : http://github.com/ajaybnl
+## Have a look on my other Arduino Sketches : http://github.com/ajaybnl
