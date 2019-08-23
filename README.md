@@ -1,7 +1,7 @@
 # Arduino-Time-Based-Relay-On-Off
 The code checks current time and tells if the time is in between the start time and end time (Eg: 1:00PM to 3:30PM)
 
-If you want to create a Relay that turns on at a specific period, but your power cuts, then you have to use this code which provides timing check even after power cut.
+If you want to create a Relay that turns on at a specific period, but your power cuts, then you have to use this code which provides timing check even after resuming power.
 
 The code converts current time into minutes or seconds from start of the day (0:00 AM)
 and compares the minutes or seconds to the given start time and end time.
