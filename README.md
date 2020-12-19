@@ -8,17 +8,11 @@ and compares the minutes or seconds to the given start time and end time.
 
 If the time maches inside of start and end time, then it returns true.
 
-Note: Using Timelib default hour() minute() second()
+### NEW Night To Day Time Supported
+
+Note: Using Timelib default hour() minute()
 
 ## The Function :
-
-
-
-## Seconds scale comparison
-```
-> bool isintime(int shh, int smm,int sss, int ehh, int emm, int ess) 
-//Match Seconds Resolution : isintime (Start Hour, Start Minute, Start Second, End Hour, End Minute, End Second)
-```
 
 
 
@@ -38,7 +32,7 @@ bool relayon = isintime(12,1,16,30);       // (12:01 to 16:30)
 or
 
 ```
-bool relayon = isintime(12,1,50,16,30,0);  // (12:01:50 to 16:30:00)
+bool relayon = isintime(23,30,5,30);  // (23:30 to 5:30)
 ```
 
 
