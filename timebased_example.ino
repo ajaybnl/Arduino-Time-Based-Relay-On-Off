@@ -87,10 +87,9 @@ bool isintime(int now_hour,int now_minutes,int now_seconds,int shh, int smm,int 
 
 
 
-//Match with Minutes only
-
-
-bool isintime(int now_hour,int now_minute,int start_hour, int start_minute, int end_hour, int end_minute) {
+//This Now Supports Night to Day Relay Operations Also (EG: 9:00 PM To 05:00 AM Relay Operation)
+//Match with Minutes Level
+bool isintime(int now_hour, int now_minute, int start_hour, int start_minute, int end_hour, int end_minute) {
   unsigned long now_minutes = 0;
   unsigned long start_minutes = 0;
   unsigned long end_minutes = 0;
@@ -98,39 +97,56 @@ bool isintime(int now_hour,int now_minute,int start_hour, int start_minute, int 
   unsigned long end_minute1 = 0;
   bool intime1 = false;
 
-  now_minutes = (((now_hour * 60) + (now_minute)));
+//now time : 23:01
+//Start : 22:00
+//End : 1:10 
 
-//Added Next Day Scadule if End Hour < Start Hour
-  
-  if(start_hour>end_hour) {        
-    //if end hour is next day
-    // from start_hour to 00:00
+
+//now_minutes = 1381
+
+  now_minutes = (((now_hour * 60) + (now_minute )));
+
+  //Added Next Day Scadule if End Hour < Start Hour
+
+
+  if (start_hour > end_hour) {
+      
+   // Now to 23:59 check
+    
     start_minutes = ((start_hour * 60) + (start_minute ));
-    end_minutes = ((24 * 60));
+    
+    end_minutes = ((23 * 60) + (60));
+    
+    
     if (now_minutes >= start_minutes && now_minutes <= end_minutes) {
       //on period
-      intime1 = true;
+      intime1=true;
     } else {
       //off period
-      intime1 = false;
+      intime1=false;
     }
-
-    // from 00:00 to end_hour
-    if (!intime1) {
-      start_minutes = ((start_minute ));
-      end_minutes = ((end_hour * 60));
-      if (now_minutes >= start_minutes && now_minutes <= end_minutes) {
-        //on period
-        intime1 = true;
-      } else {
-        //off period
-        intime1 = false;
-      }
+    
+    
+    
+    if(!intime1){
+    // 0:0 to now check
+    start_minutes = 0;
+    end_minutes = ((end_hour * 60) + (end_minute));
+    
+    if (now_minutes >= start_minutes && now_minutes <= end_minutes) {
+      //on period
+         return (true);
+    } else {
+      //off period
+     return (false);
     }
-
+    
+    }
+    
     return (intime1);
     
   } else {
+
     //same day operation
     start_minutes = ((start_hour * 60) + (start_minute ));
     end_minutes = ((end_hour * 60) + (end_minute ));
@@ -142,6 +158,7 @@ bool isintime(int now_hour,int now_minute,int start_hour, int start_minute, int 
       return (false);
     }
   }
-
+  
 }
+
 
