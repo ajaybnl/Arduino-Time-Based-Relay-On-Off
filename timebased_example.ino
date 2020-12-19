@@ -1,16 +1,14 @@
-//Time based actions for arduino based boards
-//Made by ajaybnl 
-
-//Create Relay which operates on desired time.
+//Time based actions for Esp / arduino based boards
+//Run Relays On desired time.
 //Sync time maching at any time
-//Make your home appliance run for interval of time. Even if power cuts, it will re-sync and do the job.
+//Make your home appliance run for interval of time, Even if power cuts, it will re-sync and do the job.
 
-
-
+//NEW: Now supports reverse time inputs (Like 9:10 PM To 05:00 AM )
+//EG: ret=isintime(hour(),minute(),21,10,5,0);
 
 
 //Just for some boards like esp8266 
-#include <TimeLib.h>
+#include <TimeLib.h> //Not Required
 
 void setup(){
 
@@ -32,11 +30,8 @@ bool ret=false;
 
 //Match Minutes Resolution : isintime (hour(),minute(),Start Hour, Start Minute, End Hour, End Minute)
 
-//Match Seconds Resolution : isintime (hour(),minute(),second(),Start Hour, Start Minute, Start Second, End Hour, End Minute, End Second)
-
 ret=isintime(hour(),minute(),12,1,16,30);
 
-//ret=isintime(hour(),minute(),second(),12,1,50,16,30,0);
 
 Serial.print("Current Time: ");
 Serial.print(hour());
@@ -59,31 +54,6 @@ delay(2000);
 
 }
 
-//Match with Seconds
-bool isintime(int now_hour,int now_minutes,int now_seconds,int shh, int smm,int sss, int ehh, int emm, int ess) {
-  unsigned long n=0;
-  unsigned long s=0;
-  unsigned long e=0;
-  
-  //Convert Current Time to Secs From Today (Midnight)
-  
-  n = ((now_hour * 3600) + (now_minutes * 60) + now_seconds );
-  
-  //Start Secs
-  s = ((shh * 3600) + (smm * 60) + sss);
-  
-  //End Secs
-  e = ((ehh * 3600) + (emm * 60) + ess);
-
-  //If (now) secs are inside start and end secs
-  if (n >= s && n <= e) {
-    //on period
-    return (true);
-  } else {
-    //off period
-    return (false);
-  }
-}
 
 
 
@@ -97,12 +67,8 @@ bool isintime(int now_hour, int now_minute, int start_hour, int start_minute, in
   unsigned long end_minute1 = 0;
   bool intime1 = false;
 
-//now time : 23:01
-//Start : 22:00
-//End : 1:10 
 
 
-//now_minutes = 1381
 
   now_minutes = (((now_hour * 60) + (now_minute )));
 
